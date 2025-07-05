@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "ImageFX Magic",
+  "version": "1.0",
+  "description": "Save and manage prompts and images from Google Labs Image FX",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://*.labs.google/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.labs.google/fx/tools/image-fx/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["db.js"],
+      "matches": [
+        "https://*.labs.google/*"
+      ]
+    }
+  ]
+} 
